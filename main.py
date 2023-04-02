@@ -1,7 +1,8 @@
-import requests
-from twilio.rest import Client
 import time
+
+import requests
 import schedule
+from twilio.rest import Client
 
 API_KEY = "YOUR_API_KEY"
 OWN_ENDPOINT = "https://api.openweathermap.org/data/2.5/weather"
@@ -13,6 +14,7 @@ parameter = {
     "lon": "Floating_YOUR_LONGITUDE",
     "appid": API_KEY
 }
+
 
 def send_message():
     response = requests.get(url=OWN_ENDPOINT, params=parameter)
@@ -28,6 +30,7 @@ def send_message():
             to="YOUR_PHONE_NUMBER"
         )
         print(message.status)
+
 
 schedule.every(24).hours.do(send_message)
 
